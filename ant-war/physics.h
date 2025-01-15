@@ -1,71 +1,35 @@
+#ifndef __PHYSICS_H__
+#define __PHYSICS_H__
+
+
 #pragma once 
 
 #include "boid.h"
 #include "utilities.h"
 
-int n; // nombre de 
-std::vector<boid> boids;
 
 // initialisation des boids
 
-void setup(int number) {
-	n = number;
-	for (int i = 0; i < n; i++) {
-		boid b;
-		boids.push_back(b);
-	}
-}
+void setup(boids boidz);
 
 // force de cohésion
 
-float2 f_cohesion(boid b) {
-	float2 sum = { 0.0, 0.0};
-	for (int i = 0; i < n; i++) {
-		sum = sum + boids[i].pos;
-	}
-	return sum / n - b.pos;
-}
+float2 f_cohesion(boids boidz, boid b);
 
 // force de séparation 
 
-float2 f_separation(boid b) {
-	float2 sum = { 0.0, 0.0 };
-	for (int i = 0; i < n; i++) {
-		sum = sum + (boids[i].pos - b.pos);
-	}
-	return sum / (- n); // on prend l'opposée pour bien avoir répulsion
-}
+float2 f_separation(boids boidz, boid b);
 
 // règle d'alignement 
 
-float2 f_alignement(boid b) {
-	float2 sum = { 0.0, 0.0 };
-	for (int i = 0; i < n; i++) {
-		sum = sum + boids[i].vit;
-	}
-	return sum / n;
-}
-
-//coefficients de pondération 
-
-float c_cohesion = 1.0;
-float c_separation = 1.0;
-float c_alignement = 1.0;
+float2 f_alignement(boids boidz, boid b);
 
 // PFD
 
-float2 acc_pfd(boid b) { // masse unitaire 
-	return c_cohesion * f_cohesion(b) + c_separation * f_separation(b) + c_alignement * f_alignement(b);
-}
+float2 acc_pfd(boids boidz, boid b);
 
-void next_boids() {
-	for (int i = 0; i < n; i++) {
-		boids[i].pos = boids[i].pos + boids[i].vit;
-		boids[i].vit = boids[i].vit + boids[i].acc;
-		boids[i].acc = acc_pfd(boids[i]);
-	}
-}
+void next_boids(boids boidz);
 
 
-
+#endif
 

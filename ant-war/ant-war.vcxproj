@@ -135,8 +135,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="boids.h" />
+    <ClCompile Include="boid.cpp" />
+    <ClCompile Include="physics.cpp" />
+    <ClCompile Include="physics.h" />
     <ClCompile Include="src\main.cxx" />
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="boid.h" />

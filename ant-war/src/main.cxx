@@ -1,5 +1,7 @@
 
 
+#pragma once 
+
 #ifdef _WIN32
 #include <SDL.h>
 
@@ -10,16 +12,23 @@
 #include <SDL2/SDL.h>
 
 #endif
- 
-#include "it_s_work.h"
-#include "../utilities.h"
-#include "../boids.h"
-#include "../boid.h"
 
 #include <iostream>
 #include <random>
 #include <vector>
 #include <cmath>
+ 
+#include "it_s_work.h"
+#include "../utilities.h"
+#include "../boid.h"
+#include "../physics.h"
+
+
+
+//int n; // nombre de boids
+//std::vector<boid> boids;
+
+
 
 int const WIDTH = 800;
 int const HEIGHT = 600;
@@ -50,7 +59,7 @@ void paint_it_s_work(int ox, int oy, int scale = 20) {
 	}
 }
 
-void paint_boids() {
+/*void paint_boids(int ox, int oy, int scale = 20) {
 	SDL_SetRenderDrawColor(g.renderer, 0u, 0u, 0u, SDL_ALPHA_OPAQUE);
 	for (int i = 0; i < n; i++) {
 		SDL_Rect r = {};
@@ -58,7 +67,7 @@ void paint_boids() {
 
 	}
 
-}
+}*/
 
 void do_render() {
 	SDL_SetRenderDrawColor(g.renderer, 255u, 255u, 255u, SDL_ALPHA_OPAQUE);

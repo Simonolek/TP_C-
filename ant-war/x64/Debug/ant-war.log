@@ -1,24 +1,11 @@
-﻿  boids.h
+﻿  boid.cpp
+  physics.cpp
+  physics.h
   main.cxx
-C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(26,18): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(43,20): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(44,21): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(78,6): warning C4101: 'status' : variable locale non référencée
+C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(35,18): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(52,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(53,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\simon\cours-info\skeleton\ant-war\src\main.cxx(87,6): warning C4101: 'status' : variable locale non référencée
   Génération de code en cours...
-  LINK : C:\Users\simon\cours-info\skeleton\x64\Debug\ant-war.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-main.obj : error LNK2005: "struct float2 __cdecl operator*(float,struct float2)" (??D@YA?AUfloat2@@MU0@@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "struct float2 __cdecl operator*(struct float2,float)" (??D@YA?AUfloat2@@U0@M@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "struct float2 __cdecl acc_pfd(struct boid)" (?acc_pfd@@YA?AUfloat2@@Uboid@@@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "struct float2 __cdecl f_alignement(struct boid)" (?f_alignement@@YA?AUfloat2@@Uboid@@@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "struct float2 __cdecl f_cohesion(struct boid)" (?f_cohesion@@YA?AUfloat2@@Uboid@@@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "struct float2 __cdecl f_separation(struct boid)" (?f_separation@@YA?AUfloat2@@Uboid@@@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "void __cdecl next_boids(void)" (?next_boids@@YAXXZ) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "float __cdecl randf(void)" (?randf@@YAMXZ) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "struct float2 __cdecl randvec2f(void)" (?randvec2f@@YA?AUfloat2@@XZ) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "void __cdecl setup(int)" (?setup@@YAXH@Z) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "int n" (?n@@3HA) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "float c_cohesion" (?c_cohesion@@3MA) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "float c_separation" (?c_separation@@3MA) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "float c_alignement" (?c_alignement@@3MA) déjà défini(e) dans boids.obj
-main.obj : error LNK2005: "class std::vector<struct boid,class std::allocator<struct boid> > boids" (?boids@@3V?$vector@Uboid@@V?$allocator@Uboid@@@std@@@std@@A) déjà défini(e) dans boids.obj
-C:\Users\simon\cours-info\skeleton\x64\Debug\ant-war.exe : fatal error LNK1169: un ou plusieurs symboles définis à différentes reprises ont été rencontrés
+x64\Debug\physics.obj : warning LNK4042: objet spécifié plus d'une fois ; définitions supplémentaires ignorées
+  ant-war.vcxproj -> C:\Users\simon\cours-info\skeleton\x64\Debug\ant-war.exe
