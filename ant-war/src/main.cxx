@@ -1,5 +1,7 @@
 
 
+
+
 #pragma once 
 
 #ifdef _WIN32
@@ -25,8 +27,6 @@
 
 
 
-//int n; // nombre de boids
-//std::vector<boid> boids;
 
 
 
@@ -59,31 +59,37 @@ void paint_it_s_work(int ox, int oy, int scale = 20) {
 	}
 }
 
-/*void paint_boids(int ox, int oy, int scale = 20) {
+void paint_boids(boids boidz, int ox, int oy, int scale = 20) {
 	SDL_SetRenderDrawColor(g.renderer, 0u, 0u, 0u, SDL_ALPHA_OPAQUE);
-	for (int i = 0; i < n; i++) {
-		SDL_Rect r = {};
+	for (int i = 0; i < boidz.nombre; i++) {
+		std::cout << boidz.vec[i].pos.x << " " << boidz.vec[i].pos.y << std::endl;
+		SDL_Rect r = {boidz.vec[i].pos.x + ox, boidz.vec[i].pos.y + oy, 10, 10};
 			SDL_RenderFillRect(g.renderer, &r);
-
 	}
+	std::cout << "FIN DE LA LIGNE" << std::endl;
 
-}*/
+}
 
-void do_render() {
+void do_render(boids boidz) {
 	SDL_SetRenderDrawColor(g.renderer, 255u, 255u, 255u, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(g.renderer);
 
-	paint_it_s_work(0, 0, 20);
+	paint_boids(boidz, 0, 0, 20);
 
 	SDL_RenderPresent(g.renderer);
 }
 
-void do_update() {
+void do_update(boids boidz) {
+	boidz = next_boids(boidz);
 
 }
 
-int main(int argc, char ** argv)
-{
+int main(int argc, char** argv) {
+
+	srand(time(0));
+
+	boids boidz(200);
+
 	int status;
 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS | SDL_INIT_TIMER) != 0) { // on initialise et
@@ -138,8 +144,8 @@ int main(int argc, char ** argv)
 				}
 			}
 
-			do_update();
-			do_render();
+			do_update(boidz);
+			do_render(boidz);
 		}
 	}
 
@@ -149,4 +155,37 @@ int main(int argc, char ** argv)
 	SDL_Quit();
 	return 0;
 }
+
+/*
+
+#include <iostream>
+#include <random>
+#include <vector>
+#include <cmath>
+
+#include "../utilities.h"
+#include "../boid.h"
+#include "../physics.h"
+
+
+
+int main() {
+
+	srand(time(NULL));
+
+	boids boidz(200);
+
+	std::cout << boidz.nombre << std::endl;
+	
+	
+	for (int i = 0; i < boidz.nombre; i++) {
+		std::cout << boidz.vec[i].pos.x << " " << boidz.vec[i].pos.y << std::endl;
+	};
+	return 0;
+	
+	
+
+}
+
+*/
 

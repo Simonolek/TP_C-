@@ -16,6 +16,8 @@ struct boid {
 struct boids {
 	std::vector<boid> vec;
 	int nombre;
+
+	boids(int entier);
 };
 
 

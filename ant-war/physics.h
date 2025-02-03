@@ -8,27 +8,23 @@
 #include "utilities.h"
 
 
-// initialisation des boids
-
-void setup(boids boidz);
-
 // force de cohésion
 
-float2 f_cohesion(boids boidz, boid b);
+float2 f_cohesion(boids boidz, boid& b);
 
 // force de séparation 
 
-float2 f_separation(boids boidz, boid b);
+float2 f_separation(boids boidz, boid& b);
 
 // règle d'alignement 
 
-float2 f_alignement(boids boidz, boid b);
+float2 f_alignement(boids boidz, boid& b);
 
 // PFD
 
-float2 acc_pfd(boids boidz, boid b);
+float2 acc_pfd(boids& boidz, boid& b);
 
-void next_boids(boids boidz);
+boids next_boids(boids boidz);
 
 
 #endif
