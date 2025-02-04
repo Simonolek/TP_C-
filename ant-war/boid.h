@@ -5,10 +5,19 @@
 
 #include "utilities.h"
 
-struct boid {
-	float2 pos;
-	float2 vit;
-	float2 acc;
+struct entity {
+	vec2<int> pos;
+	vec2<int> vit;
+
+	entity();
+	entity(vec2<int> p, vec2<int> v);
+
+	virtual ~entity() = default;
+};
+
+
+struct boid : public virtual entity {
+	vec2<int> acc;
 
 	boid();
 };

@@ -9,11 +9,10 @@
 
 
 
-boid::boid() {
-	pos = randvec2f();
-	vit = randvec2f();
-	acc = float2(); // acceleration initialement nulle
-}
+entity::entity() : pos(0, 0), vit(0, 0) {}
+entity::entity(vec2<int> p, vec2<int> v) : pos(p), vit(v) {}
+
+boid::boid() : entity(randvec2<int>(800, 600), randvec2<int>(10, 10)), acc() {}
 
 boids::boids(int entier) {
 	nombre = entier;

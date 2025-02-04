@@ -1,22 +1,45 @@
 #ifndef __UTILITIES_H__
 #define __UTILITIES_H__
- 
-struct float2 {
-	float x;
-	float y;
 
-	float2();
+#include <stdexcept>
 
-	float2 operator+(float2 const& obj);
-	float2 operator-(float2 const& obj);
-	float2 operator/(int const i);
+template <typename T>
+struct vec2 {
+	T x;
+	T y;
 
+	vec2() : x(0), y(0) {};
+	vec2(T x_, T y_) : x(x_), y(y_) {};
+
+	vec2 operator+(const vec2& obj) {
+		return vec2(x + obj.x, y + obj.y);
+	}
+
+	vec2 operator-(const vec2& obj) {
+		return vec2(x - obj.x, y - obj.y);
+	}
+
+	vec2 operator/(T i) {
+		if (i == 0) {
+			throw std::runtime_error("Erreur : division par 0 !");
+		}
+		return vec2(x / i, y / i);
+	}
+	
+	vec2 operator*(T i) {
+		return vec2(x * i, y * i);
+	}
+
+	friend vec2 operator*(T i, const vec2& vec) {
+		return vec2(vec.x * i, vec.y * i);
+	}
 };
 
-float2 operator*(float2 const vec, float const i);
-float2 operator*(float const i, float2 const vec);
+int randomint(int min, int max);
 
-float randf();
-float2 randvec2f();
+template <typename T>
+vec2<T> randvec2(T max1, T max2) {
+	return vec2<T>(randomint(0, max1), randomint(0, max2));
+}
 
 #endif

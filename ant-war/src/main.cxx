@@ -79,16 +79,14 @@ void do_render(boids boidz) {
 	SDL_RenderPresent(g.renderer);
 }
 
-void do_update(boids boidz) {
+void do_update(boids& boidz) {
 	boidz = next_boids(boidz);
 
 }
 
 int main(int argc, char** argv) {
 
-	srand(time(0));
-
-	boids boidz(200);
+	boids boidz(20);
 
 	int status;
 

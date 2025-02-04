@@ -8,8 +8,8 @@
 
 // force de cohésion
 
-float2 f_cohesion(boids boidz, boid& b) {
-	float2 sum;
+vec2<int> f_cohesion(boids boidz, boid& b) {
+	vec2<int> sum = vec2<int>();
 	for (int i = 0; i < boidz.nombre; i++) {
 		sum = sum + boidz.vec[i].pos;
 	}
@@ -18,8 +18,8 @@ float2 f_cohesion(boids boidz, boid& b) {
 
 // force de séparation 
 
-float2 f_separation(boids boidz, boid& b) {
-	float2 sum;
+vec2<int> f_separation(boids boidz, boid& b) {
+	vec2<int> sum = vec2<int>();
 	for (int i = 0; i < boidz.nombre; i++) {
 		sum = sum + (boidz.vec[i].pos - b.pos);
 	}
@@ -28,23 +28,23 @@ float2 f_separation(boids boidz, boid& b) {
 
 // règle d'alignement 
 
-float2 f_alignement(boids boidz, boid& b) {
-	float2 sum;
+vec2<int> f_alignement(boids boidz, boid& b) {
+	vec2<int> sum = vec2<int>();
 	for (int i = 0; i < boidz.nombre; i++) {
 		sum = sum + boidz.vec[i].vit;
 	}
 	return sum / boidz.nombre;
-}
+}	
 
 //coefficients de pondération 
 
-float c_cohesion = 1.0;
-float c_separation = 1.0;
-float c_alignement = 1.0;
+float c_cohesion = 0.1;
+float c_separation = 0;
+float c_alignement = 0;
 
 // PFD
 
-float2 acc_pfd(boids& boidz, boid& b) { // masse unitaire
+vec2<int> acc_pfd(boids& boidz, boid& b) { // masse unitaire
 	return c_cohesion * f_cohesion(boidz, b) + c_separation * f_separation(boidz, b) + c_alignement * f_alignement(boidz, b);
 }
 
@@ -55,7 +55,6 @@ boids next_boids(boids boidz) {
 		new_boidz.vec[i].vit = boidz.vec[i].vit + boidz.vec[i].acc;
 		new_boidz.vec[i].acc = acc_pfd(boidz, boidz.vec[i]);
 	}
-
 	return new_boidz;
 }
 
